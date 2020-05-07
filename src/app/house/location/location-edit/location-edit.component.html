@@ -1,0 +1,69 @@
+<mat-toolbar>
+    <h4>Edit Installation</h4>
+    <span class="fill-remaining-space"> 
+    </span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" color="warn" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<div style="overflow: auto; height: 450px;">
+    <form class="example-form" #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <table class="example-full-width" cellspacing="0">
+            <input type="hidden" name="IdLo" #IdLo="ngModel" [(ngModel)]="service.formData.IdLo">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Country</mat-label>
+                        <input matInput name="Country" #Country="ngModel" [(ngModel)]="service.formData.Country">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>State</mat-label>
+                        <input matInput name="State" #State="ngModel" [(ngModel)]="service.formData.State">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>City</mat-label>
+                        <textarea matInput placeholder="Ex. San Francisco" name="City" #City="ngModel" [(ngModel)]="service.formData.City">
+                        </textarea>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+
+        <p>
+            <mat-form-field class="example-full-width">
+                <mat-label>Address</mat-label>
+                <mat-icon matSuffix>home</mat-icon>
+                <textarea matInput name="Address" #Address="ngModel" [(ngModel)]="service.formData.Address"></textarea>
+            </mat-form-field>
+        </p>
+
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Longitude</mat-label>
+                        <input matInput name="Longitude" #Longitude="ngModel" [(ngModel)]="service.formData.Longitude">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Latitude</mat-label>
+                        <input matInput name="Latitude" #Latitude="ngModel" [(ngModel)]="service.formData.Latitude">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Property </mat-label>
+                        <input matInput name="Property" #Property="ngModel" [(ngModel)]="service.formData.Property.IdProp">
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+        <div class="button-row">
+            <button mat-raised-button color="primary" type="submit">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+        </div>
+    </form>
+</div>

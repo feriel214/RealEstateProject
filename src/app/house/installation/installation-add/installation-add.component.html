@@ -1,0 +1,27 @@
+<mat-toolbar>
+    <h4>Add Installation</h4>
+    <span class="fill-remaining-space"> 
+    </span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" color="warn" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<div style="overflow: auto; height: 450px;">
+    <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <div class="mt-4 input group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                 Installation Name 
+                </span>
+                <input type="text" class="form-control" name="Name" #Name="ngModel" [(ngModel)]="service.formData.Name" required>
+            </div>
+            <div class="text-left text-danger" *ngIf="Name.invalid && Name.touched">
+                Please enter the Installation Name
+            </div>
+        </div>
+
+        <br><br>
+        <div class="button-row">
+            <button mat-raised-button color="primary" type="submit">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+        </div>
+    </form>
+</div>

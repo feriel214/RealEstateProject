@@ -1,0 +1,44 @@
+<mat-toolbar>
+    <h4>Edit Category</h4>
+    <span class="fill-remaining-space"> 
+    </span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" color="warn" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<div style="overflow: auto; height: 450px;">
+    <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <div class="mt-4 input group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                 Category Name 
+                </span>
+                <input type="text" class="form-control" name="Name" #Name="ngModel" [(ngModel)]="service.formData.Name" required>
+            </div>
+            <div class="text-left text-danger" *ngIf="Name.invalid && Name.touched">
+                Please enter the Category Name
+            </div>
+        </div>
+        <div class="mt-4 input group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                 Category Status
+                </span>
+                <mat-button-toggle-group #group="matButtonToggleGroup">
+                    <mat-button-toggle value="true" aria-label="True">
+                        <mat-icon></mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="false" aria-label="False">
+                        <mat-icon></mat-icon>
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+                <span name="Status" #Status="{{group.checked}}" [(ngModel)]="service.formData.Status"></span>
+            </div>
+        </div>
+        <div>
+        </div>
+        <br><br>
+        <div class="button-row">
+            <button mat-raised-button color="primary" type="submit">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+        </div>
+    </form>
+</div>

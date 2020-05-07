@@ -1,0 +1,68 @@
+<div class="tableheader">
+    <H2>Locations</H2>
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia">
+    </mat-form-field>
+    <button class="addproperty" mat-raised-button color="primary" (click)="onAdd()"><mat-icon>add</mat-icon>Add Location</button>
+</div>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="listData" matSort>
+
+        <!-- Country Column -->
+        <ng-container matColumnDef="Country">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Country</th>
+            <td mat-cell *matCellDef="let row"> {{row.Country}}</td>
+        </ng-container>
+        <!-- State Column -->
+        <ng-container matColumnDef="State">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> State</th>
+            <td mat-cell *matCellDef="let row"> {{row.State}}</td>
+        </ng-container>
+        <!-- City Column -->
+        <ng-container matColumnDef="City">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> City</th>
+            <td mat-cell *matCellDef="let row"> {{row.City}}</td>
+        </ng-container>
+
+        <!-- Adress Column -->
+        <ng-container matColumnDef="Address">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Adress</th>
+            <td mat-cell *matCellDef="let row"> {{row.Address}} </td>
+        </ng-container>
+        <!-- Longitude Column -->
+        <ng-container matColumnDef="Longitude">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Longitude</th>
+            <td mat-cell *matCellDef="let row"> {{row.Longitude}} </td>
+        </ng-container>
+        <!-- Latitude Column -->
+        <ng-container matColumnDef="Latitude">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Latitude</th>
+            <td mat-cell *matCellDef="let row"> {{row.Latitude}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Property">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Property Name</th>
+            <td mat-cell *matCellDef="let row"> {{row.Property.Name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Options">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Options</th>
+            <td>
+                <mat-cell *matCellDef="let row">
+                    <button mat-icon-button (click)="onEdit(row)">
+                        <mat-icon>launch</mat-icon>
+                        </button>
+                    <button mat-icon-button color="warn" (click)="OnDelete(row.IdLo)">
+                        <mat-icon>delete_outline</mat-icon>
+                        </button>
+                </mat-cell>
+            </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

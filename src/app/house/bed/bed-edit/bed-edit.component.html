@@ -1,0 +1,53 @@
+<mat-toolbar>
+    <h4>Edit Bed</h4>
+    <span class="fill-remaining-space"> 
+    </span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" color="warn" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<div style="overflow: auto; height: 450px;">
+    <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+    <input type="hidden" name="IdBe" #IdBe="ngModel" [(ngModel)]="service.formData.IdBe">
+        <div class="mt-4 input group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                Room Number 
+                </span>
+                <input type="text" class="form-control" name="RoomNumber" #RoomNumber="ngModel" [(ngModel)]="service.formData.RoomNumber" required>
+            </div>
+            <div class="text-left text-danger" *ngIf="Name.invalid && Name.touched">
+                Please enter the Room Number
+            </div>
+        </div>
+        <div class="mt-4 input group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                Name 
+                </span>
+                <input type="text" class="form-control" name="Name" #Name="ngModel" [(ngModel)]="service.formData.Name" required>
+            </div>
+            <div class="text-left text-danger" *ngIf="Name.invalid && Name.touched">
+                Please enter theName
+            </div>
+        </div>
+        <div class="mt-4 input group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                Property
+                </span>
+                <input type="text" class="form-control" name="Property" #Property="ngModel" [(ngModel)]="service.formData.Property.Name" required>
+            </div>
+            <div class="text-left text-danger" *ngIf="Property.invalid && Property.touched">
+                Please enter the Property
+            </div>
+        </div>
+        <div>
+
+
+        </div>
+        <br><br>
+        <div class="button-row">
+            <button mat-raised-button color="primary" type="submit">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+        </div>
+    </form>
+</div>

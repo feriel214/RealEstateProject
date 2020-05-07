@@ -1,0 +1,170 @@
+<mat-toolbar>
+    <h4>Edit Property</h4>
+    <span class="fill-remaining-space"> 
+    </span>
+</mat-toolbar>
+<form [formGroup]="PropertyForm" (submit)="Onsubmit()">
+    {{ PropertyForm.value | json}}
+    <mat-card>
+        <input type="hidden" formControlName="IdProp">
+        <div class="form-group">
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Name" formControlName="Name" class="form-control">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Agency" formControlName="agency" class="form-control">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Description" formControlName="Description" class="form-control">
+            </mat-form-field>
+
+        </div>
+        <div class="form-group">
+            <mat-form-field>
+                <label>Service Type</label>
+                <select matNativeControl formControlName="ServiceType" class="form-control">
+                          <option value="0">Rental</option>
+                          <option value="1">Acquisation</option>
+                        </select>
+            </mat-form-field>
+            <mat-form-field>
+                <label>Property Type</label>
+                <select matNativeControl formControlName="PropertyType" required class="form-control">
+                                  <option value="0">VacantLand</option>
+                                  <option value="1">Residential</option>
+                                  <option value="2">Commercial</option>
+                                  <option value="3">Industrial</option>
+                                </select>
+            </mat-form-field>
+            <mat-form-field>
+                <label>Housing Type</label>
+                <select matNativeControl formControlName="HousingType" required class="form-control">
+                                    <option value="0">EntireHome</option>
+                                    <option value="1">PrivateRoom</option>
+                                    <option value="2">SharedRoom</option>
+                                    <option value="3">HotelRoom</option>
+                                </select>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+            <mat-form-field class="example-full-width">
+                <input type="number" placeholder="Living Room Count" formControlName="LivingRoomCount" class="form-control" matInput>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input type="number" placeholder="Bathroom Count" formControlName="BathRoomCount" class="form-control" matInput>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input type="number" placeholder="Kitchen Count" formControlName="KitchenCount" class="form-control" matInput>
+            </mat-form-field>
+
+        </div>
+
+
+        <div class="form-group">
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Price" class="form-control" formControlName="Price">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input matInput formControlName="Currency" class="form-control" placeholder="Currency">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input type="number" placeholder="Accomodates Count" matInput class="form-control" formControlName="AccommodatesCount">
+            </mat-form-field>
+
+        </div>
+        <div class="form-group">
+            <mat-form-field class="example-full-width">
+                <mat-label>IsBoosted</mat-label>
+                <select matNativeControl formControlName="IsBoosted" class="form-control" required>
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Status</mat-label>
+                <select matNativeControl formControlName="Status" class="form-control" required>
+                <option value="true">True</option>
+                <option value="false">False</option>
+            </select>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Price Type</mat-label>
+                <select matNativeControl formControlName="PriceType" class="form-control" required>
+                    <option value="0">Day</option>
+                    <option value="1">Week</option>
+                    <option value="2">Year</option>
+                </select>
+            </mat-form-field>
+        </div>
+        <mat-accordion class="example-headers-align">
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Add Installations
+                    </mat-panel-title>
+                    <mat-icon>build</mat-icon>
+                </mat-expansion-panel-header>
+                <!-- Add Installations   -->
+
+
+            </mat-expansion-panel>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Add Beds
+                    </mat-panel-title>
+                    <mat-icon>hotel</mat-icon>
+                </mat-expansion-panel-header>
+                <mat-form-field>
+                    <mat-label>Room Number</mat-label>
+                    <input matInput type="number">
+                </mat-form-field>
+            </mat-expansion-panel>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Add Images
+                    </mat-panel-title>
+                    <mat-icon>collections_bookmark</mat-icon>
+                </mat-expansion-panel-header>
+            </mat-expansion-panel>
+
+        </mat-accordion>
+    </mat-card>
+
+    <!-- Select Category -->
+
+
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button class="btn btn-warning ml-1" routerLink="/property">Cancel</button>
+
+
+</form>
+<!-- <mat-select *ngFor="let inst of installationService">
+                    <mat-option [value]="inst">{{inst}}</mat-option>
+                </mat-select>
+              <div *ngFor="let instal of installationsList.controls; let i=index;">
+        <input type="text" matInput name="test" placeholder="test de input " [(ngModel)]="instal.test">
+    </div>
+    <span class="btn btn-outline-success" (click)="addInstallationsForm()">+</span>
+
+
+     <div formGroupName="Installations">
+                <div class="form-group">
+                    <button class="btn btn-outline-success" type="button" (click)="addInstallations()">
+                        +
+                    </button>
+                    <div formArrayName="Installations" *ngForm="let instal of Installations.controls; let i=index;">
+                        <mat-form-field>
+                            <input type="text" placeholder="Installation Name" class="form-control" [formControlName]="i" matInput>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            -->

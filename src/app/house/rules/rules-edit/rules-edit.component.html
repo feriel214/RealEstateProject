@@ -1,0 +1,41 @@
+<mat-toolbar>
+    <h4>Edit Rule</h4>
+    <span class="fill-remaining-space"> 
+    </span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" color="warn" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<div style="overflow: auto; height: 450px;">
+    <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+        <div class="mt-4 input group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                 Rule Name 
+                </span>
+                <input type="text" class="form-control" name="Name" #Name="ngModel" [(ngModel)]="service.formData.Name" required>
+            </div>
+            <div class="text-left text-danger" *ngIf="Name.invalid && Name.touched">
+                Please enter the Rule Name
+            </div>
+        </div>
+        <div class="mt-4 input group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                 Rule Property
+                </span>
+                <input type="text" class="form-control" name="Property" #Property="ngModel" [(ngModel)]="service.formData.Property" required>
+            </div>
+            <div class="text-left text-danger" *ngIf="Property.invalid && Property.touched">
+                Please enter the Equipement Property
+            </div>
+        </div>
+        <div>
+
+
+        </div>
+        <br><br>
+        <div class="button-row">
+            <button mat-raised-button color="primary" type="submit">Submit</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+        </div>
+    </form>
+</div>

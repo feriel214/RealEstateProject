@@ -1,0 +1,37 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+            <span>Dashboard</span>
+            <span class="spacer"></span>
+            <a href="#">
+                <mat-form-field class="example-full-width">
+                    <mat-icon>search</mat-icon>
+                    <mat-label>
+                    </mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </a>
+            <a href="#">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>person_outline</mat-icon>
+            </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="onLogout()">
+                <mat-icon>touch_app</mat-icon>
+                <span>Logout</span>
+              </button>
+                    <button mat-menu-item disabled>
+                <mat-icon>build</mat-icon>
+                <span>Profile</span>
+              </button>
+                </mat-menu>
+            </a>
+        </mat-toolbar>
+        <!-- Add Content Here -->
+    </mat-sidenav-content>
+</mat-sidenav-container>
